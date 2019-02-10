@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Weather</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="reset.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+    
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+
+<main class="container">
+  <div>
+  <h2>Latest Mars News</h2>
+    <b>{{ mars_news_data.news_title}}</b>
+    <p>{{ mars_news_data.news_p}}</p>
+  </div>
+  <section id="main" class="col-lg-8 col-md-6">
+    <h2>Featured Mars Image</h2>
+    <img src = "{{ mars_image_data.featured_image_url }}" height="600" width="700">
+  </section>
+  <aside id="vis-info" class="col-lg-4 col-md-6">  
+    <div style="border: 1px solid;">
+      <h4>Current Weather on Mars</h4>
+      <p>{{ mars_data.tweet}}</p>
+    </div>
+    <div>
+      <b>Mars Facts</b>
+      <table><tr><td>{{mars_facts_data.html_table|safe}}</td></tr></table>
+    </div>
+  </aside> 
+</main>
+    <h2>Mars Hemispheres</h2>
+
+      <div class="row">
+      <div class="column">
+      {% for dict in mars_hemi_image_data.dict_list %}
+      <div class="col-lg-5 col-md-6"
+      <h3>{{dict['title']}}</h3>
+      <img src="{{dict['img_url']}}" height="80%" width="80%">
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+
+  
+   
+  </div>
+  </div>
+</body>
+
+</html>
